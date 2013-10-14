@@ -57,7 +57,7 @@ void ParticleSystem::draw() const
 
 }
 
-void ParticleSystem::addParticle(const Particle& p)
+void ParticleSystem::addParticle(Particle & p)
 {
 	particles.push_back(p);
 }

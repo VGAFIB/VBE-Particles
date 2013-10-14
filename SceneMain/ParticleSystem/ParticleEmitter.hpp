@@ -18,7 +18,7 @@ class ParticleEmitter : public GameObject
 		vec3f pos;
 
 	private:
-		void spawnParticle(float t);
+		void spawnParticle(float t, float deltaTime);
 
 		ParticleSystem* sys;
 		vec3f oldWorldPos;

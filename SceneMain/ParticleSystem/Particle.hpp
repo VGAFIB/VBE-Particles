@@ -22,6 +22,7 @@ class Particle {
 		vec4f startCol, endCol;
 
 		Particle();
+		void interact(Particle& b, float deltaTime);
 		void update(float deltaTime);
 		void render(Particle::Vertex* vtx) const;
 };
