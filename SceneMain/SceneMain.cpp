@@ -26,12 +26,12 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 
 	//Create camera
 	PerspectiveCamera* cam = new PerspectiveCamera();
-	cam->pos = vec3f(0,0,10);
-//	cam->rot.x = 45.0f;
+	cam->pos = vec3f(0,10,0);
+	cam->rot.x = 25.0f;
 	cam->addTo(this);
 
 	ParticleSystem* particles = new ParticleSystem();
-	particles->addTo(cam);
+	particles->addTo(this);
 
 	ParticleEmitter* emitter = new ParticleEmitter();
 	emitter->addTo(cam );
@@ -62,10 +62,8 @@ void SceneMain::update(float deltaTime) {
 		fpsCount = 0;
 	}
 	ParticleEmitter* pe = (ParticleEmitter*)getGame()->getObjectByName("pe");
-	pe->pos.x = (Input::getMousePos().x/float(SCRWIDTH)*2) - 1;
-	pe->pos.y = -(Input::getMousePos().y/float(SCRHEIGHT)*2) + 1;
-	pe->pos *= 8;
-//	VBE_LOG(Input::getMousePos().x << " " << Input::getMousePos().y);
+	pe->pos.x = 5*sin(GLOBALCLOCK.getElapsedTime().asSeconds()*2);
+	pe->pos.z = 30*cos(GLOBALCLOCK.getElapsedTime().asSeconds()*2)-40;
 }
 
 

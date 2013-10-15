@@ -26,8 +26,8 @@ void ParticleEmitter::spawnParticle(float t, float deltaTime) {
 	float t2 = t/deltaTime;
 	Particle pt;
 	pt.p = oldWorldPos * (1-t2) + currWorldPos * t2;
-	pt.v = glm::ballRand(5.0f);
-	pt.a = vec3f(-pt.v.x*3-200, pt.v.y*3, pt.v.z);
+	pt.v = glm::ballRand(4.0f);
+	pt.a = vec3f(pt.v.x, pt.v.y, pt.v.z);
 	t = deltaTime-t;
 	pt.update(t);
 	sys->addParticle(pt);

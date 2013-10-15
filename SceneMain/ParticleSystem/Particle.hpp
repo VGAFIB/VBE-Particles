@@ -17,7 +17,6 @@ class Particle {
 		vec3f a;
 
 		float life, startingLife;
-
 		float startSize, endSize;
 		vec4f startCol, endCol;
 
