@@ -10,7 +10,8 @@ SOURCES += \
     Commons.cpp \
     SceneMain/ParticleSystem/ParticleSystem.cpp \
     SceneMain/ParticleSystem/Particle.cpp \
-    SceneMain/ParticleSystem/ParticleEmitter.cpp
+    SceneMain/ParticleSystem/ParticleEmitter.cpp \
+    SceneMain/ParticleSystem/Myparticleemitter.cpp
 
 HEADERS += \
 	SceneMain/SceneMain.hpp \
@@ -18,7 +19,8 @@ HEADERS += \
     Commons.hpp \
     SceneMain/ParticleSystem/ParticleSystem.hpp \
     SceneMain/ParticleSystem/Particle.hpp \
-    SceneMain/ParticleSystem/ParticleEmitter.hpp
+    SceneMain/ParticleSystem/ParticleEmitter.hpp \
+    SceneMain/ParticleSystem/Myparticleemitter.hpp
 
 OTHER_FILES += \
     data/shaders/particle.vert \

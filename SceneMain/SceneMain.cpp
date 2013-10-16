@@ -1,7 +1,7 @@
 #include "SceneMain.hpp"
 #include "PerspectiveCamera.hpp"
 #include "ParticleSystem/ParticleSystem.hpp"
-#include "ParticleSystem/ParticleEmitter.hpp"
+#include "ParticleSystem/Myparticleemitter.hpp"
 
 SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 	this->setName("SCENE");
@@ -12,7 +12,6 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 
 	//Center mouse
 //	Input::setMousePos(SCRWIDTH/2,SCRHEIGHT/2,game->getWindow());
-
 	//GL stuff..:
 	glClearColor(0,0,0,1);
 	glEnable(GL_DEPTH_TEST);
@@ -32,9 +31,12 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 	ParticleSystem* particles = new ParticleSystem();
 	particles->addTo(this);
 
-	ParticleEmitter* emitter = new ParticleEmitter(30000);
-	emitter->addTo(cam );
+	MyParticleEmitter* emitter = new MyParticleEmitter(2000);
+	emitter->addTo(cam);
 	emitter->setName("pe");
+	ParticleEmitter* emitter2 = new ParticleEmitter(10000);
+	emitter2->addTo(cam);
+	emitter2->setName("pe2");
 }
 
 SceneMain::~SceneMain() {
@@ -61,11 +63,16 @@ void SceneMain::update(float deltaTime) {
 		debugCounter--;
 		fpsCount = 0;
 	}
-	ParticleEmitter* pe = (ParticleEmitter*)getGame()->getObjectByName("pe");
-	vec2f lol = vec2f(20*sin(GLOBALCLOCK.getElapsedTime().asSeconds()*5),20*cos(GLOBALCLOCK.getElapsedTime().asSeconds()*5));
-	lol *= 2*sin(GLOBALCLOCK.getElapsedTime().asSeconds()*10);
-	pe->pos.x = lol.x;
-	pe->pos.y = lol.y;
+	MyParticleEmitter* pe = (MyParticleEmitter*)getGame()->getObjectByName("pe");
+	pe->color = vec4f(glm::sphericalRand(1.0f),1.0f);
+	pe->pos.x = (Input::getMousePos().x/float(SCRWIDTH)*2) - 1;
+	pe->pos.y = -(Input::getMousePos().y/float(SCRHEIGHT)*2) + 1;
+	pe->pos *= 80;
+
+	ParticleEmitter* pe2 = (ParticleEmitter*)getGame()->getObjectByName("pe2");
+	pe2->pos.x = (Input::getMousePos().x/float(SCRWIDTH)*2) - 1;
+	pe2->pos.y = -(Input::getMousePos().y/float(SCRHEIGHT)*2) + 1;
+	pe2->pos *= 80;
 }
 
 

@@ -2,6 +2,7 @@
 #define COMMONS_HPP
 #include "VBE/includes.hpp"
 #include <queue>
+#include "glm/gtc/random.hpp"
 
 namespace Utils {
 	extern std::mt19937 mersenne;

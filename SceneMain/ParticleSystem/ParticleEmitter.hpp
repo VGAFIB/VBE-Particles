@@ -8,8 +8,9 @@ class ParticleSystem;
 class ParticleEmitter : public GameObject {
 	public:
 		ParticleEmitter(int particlesPerSecond);
+		virtual ~ParticleEmitter();
 
-		void update(float deltaTime);
+		virtual void update(float deltaTime);
 		vec3f pos;
 		vec3f rot; //wat
 
@@ -17,14 +18,14 @@ class ParticleEmitter : public GameObject {
 		void setParticlesPerSecond(int particlesPerSecond) {period = 1.0f/particlesPerSecond;}
 
 	protected:
-		virtual Particle makeParticle();
+		virtual Particle makeParticle(float frameTimePassed, float deltaTime);
+		vec3f oldWorldPos;
+		vec3f currWorldPos;
 	private:
 		void spawnParticle(float frameTimePassed, float deltaTime);
 
 		float period;
 		ParticleSystem* sys;
-		vec3f oldWorldPos;
-		vec3f currWorldPos;
 		float state;
 };
 

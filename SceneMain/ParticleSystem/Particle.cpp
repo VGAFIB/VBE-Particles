@@ -13,7 +13,7 @@ Particle::Particle(const float& lifeSpan,
 				   const float& startSize, const float& endSize,
 				   const vec4f& startCol, const vec4f& endCol,
 				   const vec3f& v, const vec3f& a)
-	: life(1), lifeMultiplier(1/lifeSpan),
+	: life(1), lifeMultiplier(1/std::max(lifeSpan,0.01f)),
 	  startSize(startSize), endSize(endSize),
 	  startCol(startCol), endCol(endCol),
 	  p(0.0f), v(v), a(a){
