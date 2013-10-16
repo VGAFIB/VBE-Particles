@@ -11,6 +11,7 @@ class Particle {
 				vec4f col;
 				float size;
 		};
+		Particle();
 		Particle(const float& lifeSpan,
 						   const float& startSize, const float& endSize,
 						   const vec4f& startCol, const vec4f& endCol,

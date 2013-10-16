@@ -12,6 +12,7 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 
 	//Center mouse
 //	Input::setMousePos(SCRWIDTH/2,SCRHEIGHT/2,game->getWindow());
+	radius =0;
 	//GL stuff..:
 	glClearColor(0,0,0,1);
 	glEnable(GL_DEPTH_TEST);
@@ -65,14 +66,14 @@ void SceneMain::update(float deltaTime) {
 	}
 	MyParticleEmitter* pe = (MyParticleEmitter*)getGame()->getObjectByName("pe");
 	pe->color = vec4f(glm::sphericalRand(1.0f),1.0f);
-	pe->pos.x = (Input::getMousePos().x/float(SCRWIDTH)*2) - 1;
-	pe->pos.y = -(Input::getMousePos().y/float(SCRHEIGHT)*2) + 1;
-	pe->pos *= 80;
+	vec2f lol = vec2f(30*sin(GLOBALCLOCK.getElapsedTime().asSeconds()*10),30*cos(GLOBALCLOCK.getElapsedTime().asSeconds()*10));
+	pe->pos.x = lol.x*radius;
+	pe->pos.y = lol.y*radius;
 
 	ParticleEmitter* pe2 = (ParticleEmitter*)getGame()->getObjectByName("pe2");
-	pe2->pos.x = (Input::getMousePos().x/float(SCRWIDTH)*2) - 1;
-	pe2->pos.y = -(Input::getMousePos().y/float(SCRHEIGHT)*2) + 1;
-	pe2->pos *= 80;
+	pe2->pos.x = lol.x*radius;
+	pe2->pos.y = lol.y*radius;
+	radius += 0.1*deltaTime;
 }
 
 

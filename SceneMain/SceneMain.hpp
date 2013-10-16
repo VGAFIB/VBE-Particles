@@ -13,6 +13,7 @@ class SceneMain : public GameObject {
 		bool loadResources();
 		float debugCounter;
 		int fpsCount;
+		float radius;
 };
 
 #endif // SCENEMAIN_HPP

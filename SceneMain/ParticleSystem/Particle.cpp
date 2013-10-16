@@ -9,6 +9,13 @@ static vec2f texcoords[6] = {
 	vec2f(-1, 1),
 };
 
+Particle::Particle()
+	: life(1), lifeMultiplier(1),
+	  startSize(1), endSize(1),
+	  startCol(1.0f), endCol(1.0f),
+	  p(0.0f), v(0.0f), a(0.0f){
+}
+
 Particle::Particle(const float& lifeSpan,
 				   const float& startSize, const float& endSize,
 				   const vec4f& startCol, const vec4f& endCol,

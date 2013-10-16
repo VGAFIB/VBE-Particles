@@ -12,8 +12,8 @@ Particle MyParticleEmitter::makeParticle(float frameTimePassed, float deltaTime)
 	float ratio = frameTimePassed/deltaTime;
 	vec3f acc(0.0f);
 	if(oldWorldPos != currWorldPos)
-		acc = glm::normalize(glm::cross(oldWorldPos-currWorldPos,vec3f(0,0,(Utils::randomInt(-1,1) >= 0?1:-1 ))))*0.1f;
+		acc = glm::cross(oldWorldPos-currWorldPos,vec3f(0,0,(Utils::randomInt(-1,1) >= 0?1:-1 )))*0.01f;
 	return Particle(1,0,20,oldColor*ratio + color*(1-ratio),vec4f(0.0f),
 					vec3f(0.0f),
-					-1000.0f*acc);
+					1000.0f*acc);
 }
