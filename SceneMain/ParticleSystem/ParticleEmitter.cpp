@@ -20,9 +20,9 @@ void ParticleEmitter::update(float deltaTime) {
 }
 
 Particle ParticleEmitter::makeParticle() {
-	return Particle(1,1,0,vec4f(1, 0, 0.01, 0.7),vec4f(1, 0.4, 0.01, 0),
-					glm::ballRand(5.0f),
-					vec3f(glm::diskRand(10.0f),0.0f));
+	return Particle(1.01+cos(GLOBALCLOCK.getElapsedTime().asSeconds())*1,1,0,vec4f(1, 0, 0.01, 0.7),vec4f(1, 0.4, 0.01, 0),
+					vec3f(glm::diskRand(10.0f),0.0f),
+					vec3f(glm::diskRand(0.0f),0.0f));
 }
 
 void ParticleEmitter::spawnParticle(float frameTimePassed, float deltaTime) {
