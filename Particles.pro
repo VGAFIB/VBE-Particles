@@ -24,5 +24,6 @@ HEADERS += \
 
 OTHER_FILES += \
     data/shaders/particle.vert \
-    data/shaders/particle.frag
+    data/shaders/particle.frag \
+    data/shaders/particle.geom
 

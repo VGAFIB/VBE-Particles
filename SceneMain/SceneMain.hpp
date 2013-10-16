@@ -2,7 +2,9 @@
 #define SCENEMAIN_HPP
 #include "Commons.hpp"
 
+class ParticleSystem;
 class Game;
+
 class SceneMain : public GameObject {
 	public:
 		SceneMain();
@@ -14,6 +16,8 @@ class SceneMain : public GameObject {
 		float debugCounter;
 		int fpsCount;
 		float radius;
+
+		ParticleSystem* particles;
 };
 
 #endif // SCENEMAIN_HPP

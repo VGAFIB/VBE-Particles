@@ -7,7 +7,6 @@ class Particle {
 	public:
 		struct Vertex {
 				vec3f pos;
-				vec2f tex;
 				vec4f col;
 				float size;
 		};
@@ -18,7 +17,7 @@ class Particle {
 						   const vec3f& v, const vec3f& a);
 		bool isAlive() {return (life>0);}
 		void update(float deltaTime);
-		void render(Particle::Vertex* vtx) const;
+		void render(Particle::Vertex& vtx) const;
 
 	private:
 		float life, lifeMultiplier;

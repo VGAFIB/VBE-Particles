@@ -29,7 +29,7 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 	cam->pos = vec3f(0,0,100);
 	cam->addTo(this);
 
-	ParticleSystem* particles = new ParticleSystem();
+	particles = new ParticleSystem();
 	particles->addTo(this);
 
 	MyParticleEmitter* emitter = new MyParticleEmitter(2000);
@@ -51,7 +51,7 @@ SceneMain::~SceneMain() {
 bool SceneMain::loadResources() {
 	//shaders
 	ShaderProgram* p = new ShaderProgram();
-	if(!p->makeProgram("data/shaders/particle.vert","data/shaders/particle.frag")) return false;
+	if(!p->makeProgram("data/shaders/particle.vert","data/shaders/particle.geom","data/shaders/particle.frag")) return false;
 	Programs.add("particle",p);
 	return true;
 }
@@ -60,20 +60,29 @@ void SceneMain::update(float deltaTime) {
 	++fpsCount;
 	debugCounter += deltaTime;
 	if (debugCounter > 1) {
-		VBE_LOG("FPS: " << fpsCount << ". Amount of GameObjects: " << getGame()->getObjectCount() );
+		VBE_LOG("FPS: " << fpsCount << ". Amount of GameObjects: " << getGame()->getObjectCount() << ". Amount of particles: " << particles->getParticleCount());
 		debugCounter--;
 		fpsCount = 0;
 	}
+
+	float t = GLOBALCLOCK.getElapsedTime().asSeconds();
+	radius = sin(t*0.132)*2.0f;
+	float tt = t*12.521;
 	MyParticleEmitter* pe = (MyParticleEmitter*)getGame()->getObjectByName("pe");
-	pe->color = vec4f(glm::sphericalRand(1.0f),1.0f);
-	vec2f lol = vec2f(30*sin(GLOBALCLOCK.getElapsedTime().asSeconds()*10),30*cos(GLOBALCLOCK.getElapsedTime().asSeconds()*10));
+	pe->color = vec4f(sin(tt), sin(2*tt+0.231), sin(3*tt+0.4123),1.0f);
+	pe->color = pe->color*0.5f+0.5f;
+	pe->color = glm::normalize(pe->color);
+
+	float speed = 5;
+	vec2f lol = vec2f(30*sin(t*speed),30*sin(t*speed*2));
+	lol.y *= 0.6f;
+
 	pe->pos.x = lol.x*radius;
 	pe->pos.y = lol.y*radius;
 
 	ParticleEmitter* pe2 = (ParticleEmitter*)getGame()->getObjectByName("pe2");
 	pe2->pos.x = lol.x*radius;
 	pe2->pos.y = lol.y*radius;
-	radius += 0.1*deltaTime;
 }
 
 

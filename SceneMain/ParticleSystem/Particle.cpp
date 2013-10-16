@@ -32,14 +32,10 @@ void Particle::update(float deltaTime) {
 	life -= deltaTime*lifeMultiplier;
 }
 
-void Particle::render(Particle::Vertex* vtx) const {
+void Particle::render(Particle::Vertex& vtx) const {
 	float size = (startSize*life + endSize*(1-life));
 	vec4f col = (startCol*life + endCol*(1-life));
-	for(int i = 0; i < 6; i++) {
-		Particle::Vertex& v = vtx[i];
-		v.pos = p;
-		v.tex = texcoords[i];
-		v.col = col;
-		v.size = size;
-	}
+	vtx.pos = p;
+	vtx.col = col;
+	vtx.size = size;
 }

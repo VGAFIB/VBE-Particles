@@ -11,6 +11,9 @@ class ParticleSystem : public GameObject
 		void update(float deltaTime);
 		void draw() const;
 		void addParticle(const Particle& p);
+		int getParticleCount() const {
+			return particles.size();
+		}
 
 	private:
 		std::list<Particle> particles;
