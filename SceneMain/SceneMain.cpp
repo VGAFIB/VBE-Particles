@@ -26,15 +26,15 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 
 	//Create camera
 	PerspectiveCamera* cam = new PerspectiveCamera();
-	cam->pos = vec3f(0,10,0);
-	cam->rot.x = 25.0f;
+	cam->pos = vec3f(0,0,10);
 	cam->addTo(this);
 
 	ParticleSystem* particles = new ParticleSystem();
 	particles->addTo(this);
 
-	ParticleEmitter* emitter = new ParticleEmitter();
+	ParticleEmitter* emitter = new ParticleEmitter(10000);
 	emitter->addTo(cam );
+	emitter->setName("pe");
 }
 
 SceneMain::~SceneMain() {
@@ -63,7 +63,7 @@ void SceneMain::update(float deltaTime) {
 	}
 	ParticleEmitter* pe = (ParticleEmitter*)getGame()->getObjectByName("pe");
 	pe->pos.x = 5*sin(GLOBALCLOCK.getElapsedTime().asSeconds()*2);
-	pe->pos.z = 30*cos(GLOBALCLOCK.getElapsedTime().asSeconds()*2)-40;
+	pe->pos.y = 5*cos(GLOBALCLOCK.getElapsedTime().asSeconds()*2);
 }
 
 

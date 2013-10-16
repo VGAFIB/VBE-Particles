@@ -11,20 +11,21 @@ class Particle {
 				vec4f col;
 				float size;
 		};
-
-		vec3f p;
-		vec3f v;
-		vec3f a;
-
-		float life, startingLife;
-		float startSize, endSize;
-		vec4f startCol, endCol;
-
-		Particle();
-		void interact(Particle& b, float deltaTime);
+		Particle(const float& lifeSpan,
+						   const float& startSize, const float& endSize,
+						   const vec4f& startCol, const vec4f& endCol,
+						   const vec3f& v, const vec3f& a);
+		bool isAlive() {return (life>0);}
 		void update(float deltaTime);
 		void render(Particle::Vertex* vtx) const;
-};
 
+	private:
+		float life, lifeMultiplier;
+		float startSize, endSize;
+		vec4f startCol, endCol;
+		vec3f p, v, a;
+
+		friend class ParticleEmitter;
+};
 
 #endif

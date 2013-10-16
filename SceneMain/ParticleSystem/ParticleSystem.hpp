@@ -3,7 +3,6 @@
 
 #include "Particle.hpp"
 #include "Commons.hpp"
-#include<list>
 
 class ParticleSystem : public GameObject
 {
@@ -11,7 +10,7 @@ class ParticleSystem : public GameObject
 		ParticleSystem();
 		void update(float deltaTime);
 		void draw() const;
-		void addParticle(Particle& p);
+		void addParticle(const Particle& p);
 
 	private:
 		std::list<Particle> particles;
