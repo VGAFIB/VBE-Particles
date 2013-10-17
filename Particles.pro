@@ -1,6 +1,4 @@
-
 include(VBE/VBE.pro)
-DEFINES += __LOG __DLOG
 INCLUDEPATH += .
 
 SOURCES += \
@@ -11,7 +9,9 @@ SOURCES += \
     SceneMain/ParticleSystem/ParticleSystem.cpp \
     SceneMain/ParticleSystem/Particle.cpp \
     SceneMain/ParticleSystem/ParticleEmitter.cpp \
-    SceneMain/ParticleSystem/Myparticleemitter.cpp
+    SceneMain/Fireball.cpp \
+    SceneMain/ParticleSystem/MyParticleEmitter.cpp \
+    SceneMain/ParticleSystem/FireParticleEmitter.cpp
 
 HEADERS += \
 	SceneMain/SceneMain.hpp \
@@ -20,10 +20,14 @@ HEADERS += \
     SceneMain/ParticleSystem/ParticleSystem.hpp \
     SceneMain/ParticleSystem/Particle.hpp \
     SceneMain/ParticleSystem/ParticleEmitter.hpp \
-    SceneMain/ParticleSystem/Myparticleemitter.hpp
+    SceneMain/Fireball.hpp \
+    SceneMain/ParticleSystem/MyParticleEmitter.hpp \
+    SceneMain/ParticleSystem/FireParticleEmitter.hpp
 
 OTHER_FILES += \
     data/shaders/particle.vert \
     data/shaders/particle.frag \
-    data/shaders/particle.geom
+    data/shaders/particle.geom \
+    data/shaders/fireball.vert \
+    data/shaders/fireball.frag
 

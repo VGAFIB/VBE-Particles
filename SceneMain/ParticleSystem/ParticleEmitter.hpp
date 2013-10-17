@@ -11,14 +11,12 @@ class ParticleEmitter : public GameObject {
 		virtual ~ParticleEmitter();
 
 		virtual void update(float deltaTime);
-		vec3f pos;
-		vec3f rot; //wat
 
 		int getParticlesPerSecond() {return floor(1.0f/period);}
 		void setParticlesPerSecond(int particlesPerSecond) {period = 1.0f/particlesPerSecond;}
 
 	protected:
-		virtual Particle makeParticle(float frameTimePassed, float deltaTime);
+		virtual Particle makeParticle(float frameTimePassed, float deltaTime, vec3f position);
 		vec3f oldWorldPos;
 		vec3f currWorldPos;
 	private:

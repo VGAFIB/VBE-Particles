@@ -4,6 +4,7 @@
 ParticleSystem::ParticleSystem() {
 	std::vector<Vertex::Element> elements;
 	elements.push_back(Vertex::Element(Vertex::Attribute::Position   , Vertex::Element::Float, 3));
+	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_vel"), Vertex::Element::Float, 3));
 	elements.push_back(Vertex::Element(Vertex::Attribute::Color      , Vertex::Element::Float, 4));
 	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_size"), Vertex::Element::Float, 1));
 	Vertex::Format format(elements);
@@ -12,9 +13,10 @@ ParticleSystem::ParticleSystem() {
 	mesh->setPrimitiveType(Mesh::POINTS);
 	model.mesh = mesh;
 	Meshes.add("particlesMesh",mesh);
-	model.program = Programs.get("particle");
-	setName("ParticleSystem");
+	model.program = Programs.get("particleShader");
+	setName("particleSystem");
 	setUpdatePriority(-10);
+	setDrawPriority(100);
 }
 
 void ParticleSystem::update(float deltaTime) {

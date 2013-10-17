@@ -8,11 +8,8 @@ class MyParticleEmitter : public ParticleEmitter {
 		MyParticleEmitter(int particlesPerSecond);
 
 		void update(float deltaTime);
-
-		vec4f color;
 	private:
-		vec4f oldColor;
-		Particle makeParticle(float frameTimePassed, float deltaTime);
+		Particle makeParticle(float frameTimePassed, float deltaTime, vec3f position);
 };
 
 #endif // MYPARTICLEEMITTER_HPP

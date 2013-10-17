@@ -7,24 +7,22 @@ class Particle {
 	public:
 		struct Vertex {
 				vec3f pos;
+				vec3f vel;
 				vec4f col;
 				float size;
 		};
 		Particle();
-		Particle(const float& lifeSpan,
-						   const float& startSize, const float& endSize,
-						   const vec4f& startCol, const vec4f& endCol,
-						   const vec3f& v, const vec3f& a);
-		bool isAlive() {return (life>0);}
+		bool isAlive() {return (lifeLeft>0);}
 		void update(float deltaTime);
 		void render(Particle::Vertex& vtx) const;
 
-	private:
-		float life, lifeMultiplier;
+		float life; //Tiempo de vida en segundos. No cambia
+		float lifeLeft; //Tiempo que queda de vida. 1..0
 		float startSize, endSize;
 		vec4f startCol, endCol;
 		vec3f p, v, a;
 
+	private:
 		friend class ParticleEmitter;
 };
 
