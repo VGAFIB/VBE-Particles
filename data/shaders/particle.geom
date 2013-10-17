@@ -21,18 +21,12 @@ const vec2[4] texCoords = {
 };
 
 void main() {
-
-	mat2 rot = mat2(1.0);
-
+	mat2 rot = mat2(1.0); //rot is the rotation and scale matrix that represents the velocity effect of the object
 	vec2 v = geom_vel[0];
 	float len = length(v);
-	if(len > 0.0001)
-	{
-		len = 1+len*0.2;
-
+	if(len > 0.0001) {
 		v = normalize(v);
-		vec2 vl = vec2(-v.y,v.x);
-		rot = mat2(v*len, vl);
+		rot = mat2(v*(1+len*0.2), vec2(-v.y,v.x));
 	}
 
 	for(int i = 0; i < 4; i++) {

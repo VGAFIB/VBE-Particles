@@ -75,6 +75,9 @@ void SceneMain::update(float deltaTime) {
 		debugCounter--;
 		fpsCount = 0;
 	}
+	Fireball* fireball = GameObject::getFirstObjectOfType<Fireball>();
+	fireball->pos.x = 5*(Input::getMousePos().x/float(SCRWIDTH)*2 - 1);
+	fireball->pos.y = -5*(Input::getMousePos().y/float(SCRHEIGHT)*2 - 1);
 }
 
 

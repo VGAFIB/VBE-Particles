@@ -9,6 +9,7 @@ class Fireball : public GameObject {
 		void update(float deltaTime);
 		void draw() const;
 
+		vec3f pos;
 		Model model;
 };
 

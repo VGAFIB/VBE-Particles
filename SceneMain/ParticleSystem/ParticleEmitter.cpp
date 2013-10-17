@@ -24,6 +24,9 @@ void ParticleEmitter::update(float deltaTime) {
 }
 
 Particle ParticleEmitter::makeParticle(float frameTimePassed, float deltaTime, vec3f position) {
+	(void) frameTimePassed;
+	(void) deltaTime;
+	(void) position;
 	return Particle();
 }
 
