@@ -3,7 +3,7 @@
 #include "ParticleSystem/FireParticleEmitter.hpp"
 #include "ParticleSystem/MyParticleEmitter.hpp"
 
-Fireball::Fireball() : pos(0.0f) {
+Fireball::Fireball() : pos(0.0f), vel(0.0f) {
 	model.mesh = Meshes.get("fireballMesh");
 	model.program = Programs.get("fireballShader");
 	FireParticleEmitter* emitter = new FireParticleEmitter(200);
@@ -14,6 +14,9 @@ Fireball::Fireball() : pos(0.0f) {
 
 void Fireball::update(float deltaTime){
 	(void) deltaTime;
+	pos += vel*deltaTime;
+	vel *= exp(-0.5*deltaTime);
+
 	float angle = GLOBALCLOCK.getElapsedTime().asSeconds()*100;
 	transform = mat4f(1.0f);
 	transform = glm::translate(transform,pos);

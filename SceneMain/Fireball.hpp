@@ -10,6 +10,7 @@ class Fireball : public GameObject {
 		void draw() const;
 
 		vec3f pos;
+		vec3f vel;
 		Model model;
 };
 
