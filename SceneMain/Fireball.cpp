@@ -6,7 +6,7 @@
 Fireball::Fireball() : pos(0.0f), vel(0.0f) {
 	model.mesh = Meshes.get("fireballMesh");
 	model.program = Programs.get("fireballShader");
-	FireParticleEmitter* emitter = new FireParticleEmitter(200);
+	FireParticleEmitter* emitter = new FireParticleEmitter(400);
 	emitter->addTo(this);
 	MyParticleEmitter* emitter2 = new MyParticleEmitter(500);
 	emitter2->addTo(this);
@@ -17,7 +17,7 @@ void Fireball::update(float deltaTime){
 	pos += vel*deltaTime;
 	vel *= exp(-0.5*deltaTime);
 
-	float angle = GLOBALCLOCK.getElapsedTime().asSeconds()*100;
+	float angle = 0.0f; //GLOBALCLOCK.getElapsedTime().asSeconds()*100;
 	transform = mat4f(1.0f);
 	transform = glm::translate(transform,pos);
 	transform = glm::scale(transform,vec3f(0.7,0.7,0.7));

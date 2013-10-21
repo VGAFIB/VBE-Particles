@@ -41,6 +41,7 @@ void ParticleSystem::draw() const {
 		i++;
 	}
 
+	glDisable(GL_CULL_FACE);
 	glDepthMask(GL_FALSE);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	model.mesh->setVertexData(&vtxs[0], particles.size());

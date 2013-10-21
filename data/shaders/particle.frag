@@ -5,5 +5,7 @@ in vec4 vColor;
 
 void main() {
 	gl_FragColor = vColor;
-	gl_FragColor.a *= max(0,1-length(vTexCoord));
+	float alpha = max(0,1-length(vTexCoord));
+	alpha *= alpha;
+	gl_FragColor.a *= alpha;
 }
