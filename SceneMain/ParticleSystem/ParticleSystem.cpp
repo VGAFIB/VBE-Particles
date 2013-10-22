@@ -7,6 +7,7 @@ ParticleSystem::ParticleSystem() {
 	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_vel"), Vertex::Element::Float, 3));
 	elements.push_back(Vertex::Element(Vertex::Attribute::Color      , Vertex::Element::Float, 4));
 	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_size"), Vertex::Element::Float, 1));
+	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_texIndex"), Vertex::Element::Byte, 1));
 	Vertex::Format format(elements);
 
 	Mesh* mesh= new Mesh(format, 0, Mesh::STREAM);
@@ -48,6 +49,7 @@ void ParticleSystem::draw() const {
 	PerspectiveCamera* cam = static_cast<PerspectiveCamera*>(getGame()->getObjectByName("cam"));
 	model.program->uniform("modelViewMatrix")->set(cam->view*fullTransform);
 	model.program->uniform("projectionMatrix")->set(cam->projection);
+	model.program->uniform("texSize")->set(1.0f/textureCount);
 	model.draw();
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthMask(GL_TRUE);

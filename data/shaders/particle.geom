@@ -1,19 +1,28 @@
 #version 420
 
 layout (points) in;
-layout (triangle_strip, max_vertices = 256) out;
+layout (triangle_strip, max_vertices = 4) out;
 
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
+uniform float texSize; // 1.0 / num de texturas
 
 in vec2 geom_vel[];
 in vec4 geom_color[];
 in float geom_size[];
+in int geom_texIndex[];
 
-out vec2 vTexCoord;
-out vec4 vColor;
+out vec2 v_texCoord;
+out vec4 v_color;
 
 const vec2[4] texCoords = {
+	vec2( 1, 1),
+	vec2( 0, 1),
+	vec2( 1, 0),
+	vec2( 0, 0)
+};
+
+const vec2[4] displacements = {
 	vec2( 1, 1),
 	vec2(-1, 1),
 	vec2( 1,-1),
@@ -21,13 +30,10 @@ const vec2[4] texCoords = {
 };
 
 void main() {
-
-
 	vec3 front = normalize(gl_in[0].gl_Position.xyz);
 	vec3 vel = vec3(geom_vel[0],0.0f);
 	vec3 up = cross(front,vel);
 
-	// the rotation and scale matrix that represents the velocity and billboard effect of the particle
 	mat3 transform = mat3(1.0);
 
 	if(length(up) < 0.0001) {
@@ -45,10 +51,11 @@ void main() {
 
 	for(int i = 0; i < 4; i++) {
 		// copy attributes
-		vec3 disp = transform*vec3(texCoords[i], 0.0);
+		vec3 disp = transform*vec3(displacements[i], 0.0);
 		gl_Position = projectionMatrix * (gl_in[0].gl_Position + vec4(disp * geom_size[0], 0.0));
-		vTexCoord = texCoords[i];
-		vColor = geom_color[0];
+		v_texCoord.x = texSize*(geom_texIndex[0] + texCoords[i].x);
+		v_texCoord.y = texCoords[i].y;
+		v_color = geom_color[0];
 		// done with the vertex
 		EmitVertex();
 	}
