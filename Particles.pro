@@ -5,10 +5,7 @@ SOURCES += \
 	main.cpp \
 	SceneMain/SceneMain.cpp \
 	SceneMain/PerspectiveCamera.cpp \
-    Commons.cpp \
-    SceneMain/ParticleSystem/ParticleSystem.cpp \
-    SceneMain/ParticleSystem/Particle.cpp \
-    SceneMain/ParticleSystem/ParticleEmitter.cpp \
+	Commons.cpp \
     SceneMain/Fireball.cpp \
     SceneMain/ParticleSystem/MyParticleEmitter.cpp \
     SceneMain/ParticleSystem/FireParticleEmitter.cpp
@@ -16,10 +13,7 @@ SOURCES += \
 HEADERS += \
 	SceneMain/SceneMain.hpp \
 	SceneMain/PerspectiveCamera.hpp \
-    Commons.hpp \
-    SceneMain/ParticleSystem/ParticleSystem.hpp \
-    SceneMain/ParticleSystem/Particle.hpp \
-    SceneMain/ParticleSystem/ParticleEmitter.hpp \
+	Commons.hpp \
     SceneMain/Fireball.hpp \
     SceneMain/ParticleSystem/MyParticleEmitter.hpp \
     SceneMain/ParticleSystem/FireParticleEmitter.hpp

@@ -1,6 +1,5 @@
 #include "SceneMain.hpp"
 #include "PerspectiveCamera.hpp"
-#include "ParticleSystem/ParticleSystem.hpp"
 #include "ParticleSystem/MyParticleEmitter.hpp"
 #include "Fireball.hpp"
 

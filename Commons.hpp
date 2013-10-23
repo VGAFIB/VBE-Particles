@@ -1,6 +1,7 @@
 #ifndef COMMONS_HPP
 #define COMMONS_HPP
 #include "VBE/includes.hpp"
+#include "VBE/modules/particles.hpp"
 
 namespace Utils {
 	extern std::mt19937 mersenne;
