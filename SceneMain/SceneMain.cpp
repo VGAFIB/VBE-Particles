@@ -52,7 +52,7 @@ SceneMain::~SceneMain() {
 bool SceneMain::loadResources() {
 	//shaders
 	ShaderProgram* p = new ShaderProgram();
-	if(!p->makeProgram("data/shaders/fireball.vert","data/shaders/fireball.frag")) return false;
+	p->makeProgramFromFile("data/shaders/fireball.vert","data/shaders/fireball.frag");
 	Programs.add("fireballShader",p);
 	//Textures
 	Texture* tex = new Texture(1);

@@ -1,6 +1,6 @@
 include(VBE/VBE.pro)
 INCLUDEPATH += .
-
+DEFINES += __DLOG
 SOURCES += \
 	main.cpp \
 	SceneMain/SceneMain.cpp \
