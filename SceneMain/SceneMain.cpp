@@ -32,6 +32,7 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 
 	particles = new ParticleSystem();
 	particles->addTo(this);
+	particles->setTextureSheet(Textures.get("particleSheetTex"),2);
 	Fireball* fir = new Fireball();
 	fir->addTo(this);
 	//	MyParticleEmitter* emitter = new MyParticleEmitter(200);
@@ -62,6 +63,10 @@ bool SceneMain::loadResources() {
 	Texture* tex = new Texture(1);
 	if(!tex->loadFromFile("data/labuena.png",true)) return false;
 	Textures.add("fireballTex",tex);
+	tex = new Texture(1);
+	if(!tex->loadFromFile("data/particleSheet.png")) return false;
+	Textures.add("particleSheetTex",tex);
+
 	//Meshes
 	Meshes.add("fireballMesh",new Mesh("data/fireball.obj"));
 	return true;

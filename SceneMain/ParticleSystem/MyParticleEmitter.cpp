@@ -23,5 +23,6 @@ Particle MyParticleEmitter::makeParticle(float frameTimePassed, float deltaTime,
 	pt.v = lol + vel;
 	pt.p = position + pt.v/10.0f;
 	pt.a = lol;
+	pt.texIndex = 1;
 	return pt;
 }

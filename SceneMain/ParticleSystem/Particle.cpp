@@ -13,7 +13,8 @@ Particle::Particle()
 	: life(1), lifeLeft(1),
 	  startSize(1), endSize(1),
 	  startCol(1.0f), endCol(1.0f),
-	  p(0.0f), v(0.0f), a(0.0f){
+	  p(0.0f), v(0.0f), a(0.0f),
+	  texIndex(0) {
 }
 
 void Particle::update(float deltaTime) {
@@ -29,4 +30,5 @@ void Particle::render(Particle::Vertex& vtx) const {
 	vtx.vel = v;
 	vtx.col = col;
 	vtx.size = size;
+	vtx.texIndex = texIndex;
 }

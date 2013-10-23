@@ -11,13 +11,14 @@ class ParticleSystem : public GameObject {
 		void draw() const;
 		void addParticle(const Particle& p);
 		int getParticleCount() const { return particles.size(); }
-		void setTextureCount(unsigned int textureCount) { this->textureCount = textureCount; }
+		void setTextureSheet(Texture* textureSheet, unsigned int textureCount);
 
 	private:
 		std::list<Particle> particles;
 		mutable std::vector<Particle::Vertex> vtxs;
 		Model model;
 		unsigned int textureCount;
+		Texture* textureSheet;
 };
 
 #endif // PARTICLESYSTEM_HPP

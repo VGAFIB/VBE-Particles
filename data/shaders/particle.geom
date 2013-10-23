@@ -46,14 +46,14 @@ void main() {
 		up = normalize(up);
 		vec3 right = normalize(cross(front,up));
 		float len = length(vel);
-		transform = mat3(right*(1+len*0.4),up,front);
+		transform = mat3(right*(1+len*0.2),up,front);
 	}
 
 	for(int i = 0; i < 4; i++) {
 		// copy attributes
 		vec3 disp = transform*vec3(displacements[i], 0.0);
 		gl_Position = projectionMatrix * (gl_in[0].gl_Position + vec4(disp * geom_size[0], 0.0));
-		v_texCoord.x = texSize*(geom_texIndex[0] + texCoords[i].x);
+		v_texCoord.x = texSize*(float(geom_texIndex[0]) + float(texCoords[i].x));
 		v_texCoord.y = texCoords[i].y;
 		v_color = geom_color[0];
 		// done with the vertex

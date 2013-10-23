@@ -10,6 +10,7 @@ class Particle {
 				vec3f vel;
 				vec4f col;
 				float size;
+				int texIndex;
 		};
 		Particle();
 		bool isAlive() {return (lifeLeft>0);}
@@ -21,6 +22,7 @@ class Particle {
 		float startSize, endSize;
 		vec4f startCol, endCol;
 		vec3f p, v, a;
+		int texIndex;
 
 	private:
 		friend class ParticleEmitter;
