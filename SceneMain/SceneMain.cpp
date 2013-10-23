@@ -12,7 +12,6 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 
 	//Center mouse
 	//	Input::setMousePos(SCRWIDTH/2,SCRHEIGHT/2,game->getWindow());
-	radius = 0;
 	//GL stuff..:
 	glClearColor(0,0,0,1);
 	glEnable(GL_DEPTH_TEST);
@@ -29,7 +28,7 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 	cam->pos = vec3f(0,0,10);
 	cam->addTo(this);
 
-	particles = new ParticleSystem();
+	ParticleSystem* particles = new ParticleSystem();
 	particles->addTo(this);
 	particles->setTextureSheet(Textures.get("particleSheetTex"),2);
 	Fireball* fir = new Fireball();
@@ -72,16 +71,17 @@ bool SceneMain::loadResources() {
 }
 
 void SceneMain::update(float deltaTime) {
+	PerspectiveCamera* cam = static_cast<PerspectiveCamera*>(getGame()->getObjectByName("cam"));
+	ParticleSystem* sys = static_cast<ParticleSystem*>(getGame()->getObjectByName("particleSystem"));
+
 	++fpsCount;
 	debugCounter += deltaTime;
 	if (debugCounter > 1) {
-		VBE_LOG("FPS: " << fpsCount << ". Amount of GameObjects: " << getGame()->getObjectCount() << ". Amount of particles: " << particles->getParticleCount());
+		VBE_LOG("FPS: " << fpsCount << ". Amount of GameObjects: " << getGame()->getObjectCount() << ". Amount of particles: " << sys->getParticleCount());
 		debugCounter--;
 		fpsCount = 0;
 	}
 
-	PerspectiveCamera* cam = static_cast<PerspectiveCamera*>(getGame()->getObjectByName("cam"));
-	ParticleSystem* sys = static_cast<ParticleSystem*>(getGame()->getObjectByName("particleSystem"));
 	sys->setProjectionMatrix(cam->projection);
 	sys->setViewMatrix(cam->view);
 	Fireball* fireball = GameObject::getFirstObjectOfType<Fireball>();

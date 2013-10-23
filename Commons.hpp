@@ -11,5 +11,4 @@ namespace Utils {
 	}
 }
 
-
 #endif // COMMONS_HPP

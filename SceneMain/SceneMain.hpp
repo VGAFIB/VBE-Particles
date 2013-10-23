@@ -15,9 +15,6 @@ class SceneMain : public GameObject {
 		bool loadResources();
 		float debugCounter;
 		int fpsCount;
-		float radius;
-
-		ParticleSystem* particles;
 };
 
 #endif // SCENEMAIN_HPP
