@@ -1,14 +1,5 @@
 #include "Particle.hpp"
 
-static vec2f texcoords[6] = {
-	vec2f(-1, -1),
-	vec2f(1, -1),
-	vec2f(1, 1),
-	vec2f(-1, -1),
-	vec2f(1, 1),
-	vec2f(-1, 1),
-};
-
 Particle::Particle()
 	: life(1), lifeLeft(1),
 	  startSize(1), endSize(1),
