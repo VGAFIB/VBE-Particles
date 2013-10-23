@@ -1,7 +1,6 @@
 #ifndef PARTICLEEMITTER_HPP
 #define PARTICLEEMITTER_HPP
 
-#include "Commons.hpp"
 #include "Particle.hpp"
 
 class ParticleSystem;

@@ -9,7 +9,8 @@ PerspectiveCamera::PerspectiveCamera(const vec3f& pos, const vec3f& rot)
 
 void PerspectiveCamera::update(float deltaTime) {
 	(void) deltaTime;
-
+	if(Input::isKeyDown(sf::Keyboard::LShift)) pos.z -= 10*deltaTime;
+	if(Input::isKeyDown(sf::Keyboard::Space)) pos.z += 10*deltaTime;
 	view = mat4f(1.0f);
 	view = glm::rotate(view,rot.x,vec3f(1,0,0));
 	view = glm::rotate(view,rot.y,vec3f(0,1,0));

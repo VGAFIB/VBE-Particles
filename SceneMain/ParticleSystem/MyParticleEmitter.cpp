@@ -1,4 +1,5 @@
 #include "MyParticleEmitter.hpp"
+#include "../../VBE/glm/gtc/random.hpp"
 
 MyParticleEmitter::MyParticleEmitter(int particlesPerSecond) : ParticleEmitter(particlesPerSecond) {
 }

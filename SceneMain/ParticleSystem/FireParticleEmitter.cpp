@@ -1,4 +1,5 @@
 #include "FireParticleEmitter.hpp"
+#include "../../VBE/glm/gtc/random.hpp"
 
 FireParticleEmitter::FireParticleEmitter(int particlesPerSecond) : ParticleEmitter(particlesPerSecond) {
 }

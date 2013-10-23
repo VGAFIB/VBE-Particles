@@ -1,7 +1,7 @@
-#ifndef _PARTICLES_H
-#define _PARTICLES_H
+#ifndef PARTICLE_HPP
+#define PARTICLE_HPP
 
-#include "Commons.hpp"
+#include "../../VBE/includes.hpp"
 
 class Particle {
 	public:
@@ -28,4 +28,4 @@ class Particle {
 		friend class ParticleEmitter;
 };
 
-#endif
+#endif //PARTICLE_HPP

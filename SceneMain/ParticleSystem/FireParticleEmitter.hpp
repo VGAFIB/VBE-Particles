@@ -1,6 +1,7 @@
 #ifndef FIREPARTICLEEMITTER_HPP
 #define FIREPARTICLEEMITTER_HPP
 #include "ParticleEmitter.hpp"
+#include "Commons.hpp"
 
 class FireParticleEmitter : public ParticleEmitter {
 	public:

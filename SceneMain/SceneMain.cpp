@@ -80,6 +80,11 @@ void SceneMain::update(float deltaTime) {
 		debugCounter--;
 		fpsCount = 0;
 	}
+
+	PerspectiveCamera* cam = static_cast<PerspectiveCamera*>(getGame()->getObjectByName("cam"));
+	ParticleSystem* sys = static_cast<ParticleSystem*>(getGame()->getObjectByName("particleSystem"));
+	sys->setProjectionMatrix(cam->projection);
+	sys->setViewMatrix(cam->view);
 	Fireball* fireball = GameObject::getFirstObjectOfType<Fireball>();
 	vec3f newpos = vec3f(5*(Input::getMousePos().x/float(SCRWIDTH)*2 - 1),
 						-5*(Input::getMousePos().y/float(SCRHEIGHT)*2 - 1),

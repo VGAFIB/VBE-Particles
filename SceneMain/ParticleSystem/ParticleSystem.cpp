@@ -1,7 +1,8 @@
 #include "ParticleSystem.hpp"
-#include "../PerspectiveCamera.hpp"
 
-ParticleSystem::ParticleSystem() : textureCount(0), textureSheet(NULL) {
+ParticleSystem::ParticleSystem() :
+	textureCount(0), textureSheet(NULL),
+	projectionMatrix(1.0f), viewMatrix(1.0f) {
 	std::vector<Vertex::Element> elements;
 	elements.push_back(Vertex::Element(Vertex::Attribute::Position   , Vertex::Element::Float, 3));
 	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_vel"), Vertex::Element::Float, 3));
@@ -16,7 +17,7 @@ ParticleSystem::ParticleSystem() : textureCount(0), textureSheet(NULL) {
 	Meshes.add("particlesMesh",mesh);
 	model.program = Programs.get("particleShader");
 	setName("particleSystem");
-	setUpdatePriority(-10);
+	setUpdatePriority(-100);
 	setDrawPriority(100);
 }
 
@@ -45,9 +46,8 @@ void ParticleSystem::draw() const {
 	glDepthMask(GL_FALSE);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 	model.mesh->setVertexData(&vtxs[0], particles.size());
-	PerspectiveCamera* cam = static_cast<PerspectiveCamera*>(getGame()->getObjectByName("cam"));
-	model.program->uniform("modelViewMatrix")->set(cam->view*fullTransform);
-	model.program->uniform("projectionMatrix")->set(cam->projection);
+	model.program->uniform("modelViewMatrix")->set(viewMatrix*fullTransform);
+	model.program->uniform("projectionMatrix")->set(projectionMatrix);
 	model.program->uniform("texSize")->set(1.0f/float(textureCount));
 	model.program->uniform("textureSheet")->set(textureSheet);
 	model.draw();
