@@ -52,9 +52,6 @@ SceneMain::~SceneMain() {
 bool SceneMain::loadResources() {
 	//shaders
 	ShaderProgram* p = new ShaderProgram();
-	if(!p->makeProgram("data/shaders/particle.vert","data/shaders/particle.geom","data/shaders/particle.frag")) return false;
-	Programs.add("particleShader",p);
-	p = new ShaderProgram();
 	if(!p->makeProgram("data/shaders/fireball.vert","data/shaders/fireball.frag")) return false;
 	Programs.add("fireballShader",p);
 	//Textures
