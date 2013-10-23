@@ -7,7 +7,7 @@ ParticleSystem::ParticleSystem() : textureCount(0), textureSheet(NULL) {
 	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_vel"), Vertex::Element::Float, 3));
 	elements.push_back(Vertex::Element(Vertex::Attribute::Color      , Vertex::Element::Float, 4));
 	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_size"), Vertex::Element::Float, 1));
-	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_texIndex"), Vertex::Element::Float, 1)); //si pongo Vertex::Element::Int no tira :/
+	elements.push_back(Vertex::Element(Vertex::Attribute::get("a_texIndex"), Vertex::Element::Int, 1));
 	Vertex::Format format(elements);
 
 	Mesh* mesh= new Mesh(format, 0, Mesh::STREAM);
