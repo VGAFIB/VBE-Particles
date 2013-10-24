@@ -15,8 +15,6 @@ SceneMain::SceneMain() : debugCounter(0.0), fpsCount(0) {
 	//GL stuff..:
 	glClearColor(0,0,0,1);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_ALPHA_TEST);
-	glAlphaFunc(GL_GREATER, 0.01f);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthFunc(GL_LEQUAL);
