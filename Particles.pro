@@ -19,9 +19,6 @@ HEADERS += \
     SceneMain/ParticleSystem/FireParticleEmitter.hpp
 
 OTHER_FILES += \
-    data/shaders/particle.vert \
-    data/shaders/particle.frag \
-    data/shaders/particle.geom \
     data/shaders/fireball.vert \
     data/shaders/fireball.frag
 
